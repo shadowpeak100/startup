@@ -23,3 +23,8 @@ rate songs using a star system to promote favorites and especially well done son
 designed to be clean, simple and user friendly with essential features but a quick learning curve for 
 all ages.
 
+### Sketches and Proof of Concept ###
+##### Main Home page #####
+![Concept Sketch 1](https://github.com/shadowpeak100/startup/blob/main/pictures/Website%20Mockup%20Part%201%20%5BCA%20260%5D.jpg?raw=true)
+##### Individual Song Page #####
+![Concept Sketch 1](https://github.com/shadowpeak100/startup/blob/main/pictures/Website%20mock%20up%20part%202%20%5BCS%20260%5D.jpg?raw=true)

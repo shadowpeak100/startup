@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="icon" href="pictures/SoundWaves.png" />
+</head>
+<body>
+<!--menu bar-->
+<header>
+    <img src="pictures/SoundWaves.png" alt="Sound Wave icon">
+    <a href="home.html"><h1>Motor Music</h1></a>
+
+    <nav>
+        <menu>
+            <li><a href="popularSongs.html">Popular</a></li>
+            <li><a href="newSongs.html">New</a></li>
+            <li><a href="allSongs.html">All</a></li>
+        </menu>
+    </nav>
+    <form action="/search" method="get">
+        <label for="search">Search:</label>
+        <input type="search" id="search" name="q" placeholder="Search...">
+        <input type="submit" value="Search">
+    </form>
+    <button onclick="location.href='/login'">Login</button>
+
+    <hr />
+</header>
+<!--Actual Body-->
+
+<h3>Sorted By Newest to Oldest</h3>
+
+<main>
+    <div class="song-box">
+        <img src="pictures/Play.png" alt="A Play Arrow">
+        <p>
+            Muse - Madness
+        </p>
+        <div class="star-rating">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        </div>
+        <img src="pictures/Download.png" alt="Download Symbol">
+    </div>
+
+    <div class="song-box">
+        <img src="pictures/Play.png" alt="A Play Arrow">
+        <p>
+            Metallica - Nothing Else Matters
+        </p>
+        <div class="star-rating">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        </div>
+        <img src="pictures/Download.png" alt="Download Symbol">
+    </div>
+
+
+
+
+</main>
+
+<!--Footer-->
+<footer>
+    <hr />
+    <span class="text-reset">Brayden Lewis</span>
+    <br />
+    <a href="https://github.com/shadowpeak100">Visit my Github!</a>
+    <a href="">Privacy Policy</a>
+    <a href="">About Us</a>
+</footer>
+</body>
+</html>

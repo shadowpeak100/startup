@@ -28,3 +28,10 @@ all ages.
 ![Concept Sketch 1](https://github.com/shadowpeak100/startup/blob/main/pictures/Website%20Mockup%20Part%201%20%5BCA%20260%5D.jpg?raw=true)
 ##### Individual Song Page #####
 ![Concept Sketch 1](https://github.com/shadowpeak100/startup/blob/main/pictures/Website%20mock%20up%20part%202%20%5BCS%20260%5D.jpg?raw=true)
+
+## Basic HTML ##
+2/5/24
+
+The website has been given some basic HTML, including some space for websockets where a live comment/chat system will go.
+This will better facilitate the sense of community fostered on the website. I also added a cool code block to give a preview
+for the different songs others have written.

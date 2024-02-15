@@ -5,52 +5,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
     <link rel="icon" href="pictures/SoundWaves.png" />
+    <link rel="stylesheet" type="text/css" href="./styles/styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+          rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+          rel="stylesheet">
 </head>
 <body>
 <!--menu bar-->
 <header>
-    <img src="pictures/SoundWaves.png" alt="Sound Wave icon">
-    <a href="index.html"><h1>Motor Music</h1></a>
+    <div class="navbar">
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.586 10.081c-1.439 0-1.35 2.802-2.029 4.071-.114.211-.425.184-.5-.044-.771-2.364-.419-8.108-2.51-8.108-2.189 0-1.648 7.433-2.5 10.462-.063.23-.381.25-.474.028-.9-2.161-.799-6.875-2.502-6.875-1.762 0-1.612 3.949-2.302 5.54-.091.213-.392.22-.493.01-.503-1.049-.664-3.165-2.564-3.165h-2.213c-.275 0-.499.224-.499.499s.224.501.499.501h2.213c1.572 0 1.038 3.484 2.854 3.484 1.684 0 1.502-3.79 2.223-5.47.088-.208.382-.202.466.006.805 2.047.79 6.98 2.641 6.98 2.077 0 1.337-7.856 2.443-10.621.083-.211.384-.222.479-.012 1.029 2.25.487 8.126 2.344 8.126 1.639 0 1.737-2.706 2.23-4.038.081-.212.373-.227.474-.027.516 1.001.846 2.572 2.4 2.572h2.235c.275 0 .499-.224.499-.499 0-.276-.224-.5-.499-.5h-2.235c-1.323 0-1.117-2.92-2.68-2.92z"/></svg>
+        </a>
+        <div class="main-menu">
+            <div class="menu-icon">
+                <svg viewbox="0 0 60 60" width="60px" height="60px">
+                    <line x1="5%" y1="50%" x2="95%" y2="50%" />
+                    <line x1="5%" y1="50%" x2="95%" y2="50%" />
+                </svg>
+            </div>
+            <nav>
+                <h2 class="hidden">Main Menu</h2>
+                <ul class="left">
+                    <li>
+                        <div id="wrap">
+                            <form action="" autocomplete="on">
+                                <input id="search" name="search" type="text" placeholder="Whatcha want?"><input id="search_submit" value="Rechercher" type="submit">
+                            </form>
+                        </div>
+                    </li>
+                    <li><a class="button" href="popularSongs.html">Popular</a></li>
+                    <li><a class="button" href="newSongs.html">New</a></li>
+                    <li><a class="button" href="allSongs.html">All</a></li>
+                    <li><a class="button" href="/login">Log In</a></li>
+                </ul>
+            </nav>
 
-    <nav>
-        <menu>
-            <li><a href="popularSongs.html">Popular</a></li>
-            <li><a href="newSongs.html">New</a></li>
-            <li><a href="allSongs.html">All</a></li>
-        </menu>
-    </nav>
-    <form action="/search" method="get">
-        <label for="search">Search:</label>
-        <input type="search" id="search" name="q" placeholder="Search...">
-        <input type="submit" value="Search">
-    </form>
-    <button onclick="location.href='/login'">Login</button>
-    <p>Current User</p>
-    <hr />
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="myBar"></div>
+        </div>
+    </div>
 </header>
 <!--Actual Body-->
 
 <main>
-    <h3>About Me</h3>
-    <img src="pictures/Brayden.jpg" alt="A picture of a very guapo dude repelling">
-    <p>Hi! My name is Brayden. I am currently a CS student at BYU and enjoy programming in Go the most. I love concurrency,
-    data processing and learning how memory works below the code. I also like side projects, like this that teach some wicked
-    cool hardware and software coordination with this clean HTML website. When I'm not coding, catch me outside repelling,
-    skiing, hiking or on some random adventure. Thanks for visiting the site!</p>
-
-
-
-
+    <div class="body-flex">
+        <img class="profile" src="pictures/Brayden.jpg" alt="A picture of a very guapo dude repelling">
+            <h3>About me</h3>
+            <p>Hi! My name is Brayden. I am currently a CS student at BYU and enjoy programming in Go the most. I love concurrency,
+                data processing and learning how memory works below the code. I also like side projects, like this that teach some wicked
+                cool hardware and software coordination with this clean HTML website. When I'm not coding, catch me outside repelling,
+                skiing, hiking or on some random adventure. Thanks for visiting the site!</p>
+    </div>
 </main>
 
 <!--Footer-->
 <footer>
-    <hr />
-    <span class="text-reset">Brayden Lewis</span>
-    <br />
-    <a href="https://github.com/shadowpeak100">Visit my Github!</a>
-    <a href="privacy_policy.html">Privacy Policy</a>
-    <a href="about_us.html">About Us</a>
+    <span class="text-reset footer-item">Brayden Lewis</span>
+    <a class="footer-item" href="https://github.com/shadowpeak100">Visit my Github!</a>
+    <a class="footer-item" href="privacy_policy.html">Privacy Policy</a>
+    <a class="footer-item" href="about_us.html">About Us</a>
 </footer>
 </body>
 </html>
+
+<script>
+    window.addEventListener("DOMContentLoaded", () => {
+        document.querySelector(".menu-icon").addEventListener("click", () => {
+            document.querySelector(".main-menu").classList.toggle("menu-show");
+        });
+    });
+
+    // When the user scrolls the page, execute myFunction
+    window.onscroll = function () {
+        myFunction()
+    };
+
+    function myFunction() {
+        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrolled = (winScroll / height) * 100;
+        document.getElementById("myBar").style.width = scrolled + "%";
+    }
+</script>

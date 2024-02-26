@@ -35,3 +35,11 @@ all ages.
 The website has been given some basic HTML, including some space for websockets where a live comment/chat system will go.
 This will better facilitate the sense of community fostered on the website. I also added a cool code block to give a preview
 for the different songs others have written.
+
+## CSS ##
+2/14/24
+
+The website has been made pretty! CSS has been added as well as responsive design. Upon resizing to a mobile size, 
+a hamburger menu shows itself using flex box. The menu has been created as well as a search bar for finding songs from 
+the data base (functionality will be added later but it has been formatted as a form) Other placeholders such as the 
+login button will allow functionality in the future but has been put in place for now.

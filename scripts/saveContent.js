@@ -1,9 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const ratingInput = document.getElementById('rating');
     const textFileInput = document.getElementById('textFile');
     const mp3FileInput = document.getElementById('mp3File');
     const titleInput = document.getElementById('songTitle');
-    const commentsInput = document.getElementById('comments');
     const saveButton = document.getElementById('saveButton');
 
     saveButton.addEventListener('click', function() {

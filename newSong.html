@@ -43,7 +43,7 @@
                         </div>
                     </li>
                     <li><a class="button" href="popularSongs.html">Popular</a></li>
-                    <li><a class="button" href="newSongs.html">New</a></li>
+                    <li><a class="button" href="newSong.html">New</a></li>
                     <li><a class="button" href="allSongs.html">All</a></li>
                     <li><a class="button" id="loginButton" onclick="toggleLoginBox()">Log In</a></li>
                 </ul>
@@ -69,6 +69,7 @@
                     Submit
                 </a>
             </form>
+        </div>
 
         <div class="progress-container">
             <div class="progress-bar" id="myBar"></div>
@@ -78,66 +79,25 @@
 <!--Actual Body-->
 
 <main>
-    <p>The following content is sorted newest to oldest</p>
     <div class="body-flex">
-        <div class="song-box">
-            <img class="songElement" src="pictures/Play.png" alt="A Play Arrow">
-            <p class="songElement">
-                <a href="individualSong.html">Muse - Madness</a>
-            </p>
-            <div class="star-rating songElement">
-                <span class="star" data-value="1">&#9733;</span>
-                <span class="star" data-value="2">&#9733;</span>
-                <span class="star" data-value="3">&#9733;</span>
-                <span class="star" data-value="4">&#9733;</span>
-                <span class="star" data-value="5">&#9733;</span>
-            </div>
-            <img class="songElement" src="pictures/Download.png" alt="Download Symbol">
-        </div>
+        <h1>Save Object to Local Storage</h1>
+        <label for="rating">Rating (0-5):</label>
+        <input type="number" id="rating" min="0" max="5" value="0"><br><br>
 
-        <div class="song-box">
-            <img src="pictures/Play.png" alt="A Play Arrow">
-            <a href="individualSong.html">Metallica - Nothing Else Matters</a>
-            <div class="star-rating">
-                <span class="star" data-value="1">&#9733;</span>
-                <span class="star" data-value="2">&#9733;</span>
-                <span class="star" data-value="3">&#9733;</span>
-                <span class="star" data-value="4">&#9733;</span>
-                <span class="star" data-value="5">&#9733;</span>
-            </div>
-            <img src="pictures/Download.png" alt="Download Symbol">
-        </div>
+        <label for="textFile">Text File:</label>
+        <input class="button" type="file" id="textFile"><br><br>
 
-        <div class="song-box">
-            <img src="pictures/Play.png" alt="A Play Arrow">
-            <a href="individualSong.html">Bastille - Pompeii</a>
-            <div class="star-rating">
-                <span class="star" data-value="1">&#9733;</span>
-                <span class="star" data-value="2">&#9733;</span>
-                <span class="star" data-value="3">&#9733;</span>
-                <span class="star" data-value="4">&#9733;</span>
-                <span class="star" data-value="5">&#9733;</span>
-            </div>
-            <img src="pictures/Download.png" alt="Download Symbol">
-        </div>
+        <label for="mp3File">MP3 File:</label>
+        <input class="button" type="file" id="mp3File"><br><br>
 
-        <div class="song-box">
-            <img src="pictures/Play.png" alt="A Play Arrow">
-            <a href="individualSong.html">Maroon 5 - Can't stop</a>
-            <div class="star-rating">
-                <span class="star" data-value="1">&#9733;</span>
-                <span class="star" data-value="2">&#9733;</span>
-                <span class="star" data-value="3">&#9733;</span>
-                <span class="star" data-value="4">&#9733;</span>
-                <span class="star" data-value="5">&#9733;</span>
-            </div>
-            <img src="pictures/Download.png" alt="Download Symbol">
-        </div>
+        <label for="songTitle">Title:</label>
+        <textarea id="songTitle" rows="2" cols="50"></textarea><br><br>
+
+        <label for="comments">Comments:</label>
+        <textarea id="comments" rows="2" cols="50"></textarea><br><br>
+
+        <button id="saveButton">Save Object</button>
     </div>
-
-
-
-
 </main>
 
 <!--Footer-->
@@ -170,3 +130,4 @@
     }
 </script>
 <script src="scripts/playMusic.js"></script>
+<script src="scripts/saveContent.js"></script>

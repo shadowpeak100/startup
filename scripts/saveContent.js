@@ -7,14 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const saveButton = document.getElementById('saveButton');
 
     saveButton.addEventListener('click', function() {
-        const rating = 0;
+        const rating = [];
         const title = titleInput.value;
-        const comments = "";
-
-        if (isNaN(rating) || rating < 0 || rating > 5) {
-            alert('Please enter a valid rating between 0 and 5.');
-            return;
-        }
+        const comments = [];
 
         if (!title.trim()) {
             alert('Please enter a title.');

@@ -335,17 +335,17 @@ Things to review:
 * Border: Line around an element
 * Padding: Space around content of selected item
 * Content
-![img_8.png](img_8.png)
+![img_8.png](pictures/img_8.png)
 * Prints 4
 * What does div do?
 * Creates a division element
-![img_7.png](img_7.png)
+![img_7.png](pictures/img_7.png)
 * Prints ['rat', 'fish']
-![img_6.png](img_6.png)
+![img_6.png](pictures/img_6.png)
 * Prints cow:rat:fish
-![img_4.png](img_4.png)
+![img_4.png](pictures/img_4.png)
 * Prints ['a1', 'a2', 'a3']
-![img_3.png](img_3.png)
+![img_3.png](pictures/img_3.png)
 * Adds a mouseover event to the p elements
 * Valid JS notations:
   * const f = (x) => {}
@@ -371,7 +371,7 @@ Things to review:
   * Sets the child text for the an element
 * How to make a valid hyperlink:
   * ```<a href='https://c.com'>x</a>```
-![img_9.png](img_9.png)
+![img_9.png](pictures/img_9.png)
 * Change only the BYU text to blue
   * div.header { color: blue; }
 * How to make something executable
@@ -379,9 +379,9 @@ Things to review:
 * DNS subdomains go at the beginning of a link
 * To point at another DNS record, use the following DNS record name:
   * CNAME
-![img_10.png](img_10.png)
+![img_10.png](pictures/img_10.png)
   * prints burger fries taco shake noodles
-![img_11.png](img_11.png)
+![img_11.png](pictures/img_11.png)
   * prints A D B
 
 

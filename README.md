@@ -43,3 +43,10 @@ The website has been made pretty! CSS has been added as well as responsive desig
 a hamburger menu shows itself using flex box. The menu has been created as well as a search bar for finding songs from 
 the data base (functionality will be added later but it has been formatted as a form) Other placeholders such as the 
 login button will allow functionality in the future but has been put in place for now.
+
+## JavaScript ##
+2/28/24
+
+The website now has the ability to play music, support for an RSS feed (for the websocket) and can save music objects then
+put them into the all songs area. The new songs file was changed to new song, which allows for the uploading of information.
+There is now also a login function that displays the username when signed in. This data is stored in local storage for now.

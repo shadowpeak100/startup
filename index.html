@@ -45,10 +45,7 @@
                     <li><a class="button" href="popularSongs.html">Popular</a></li>
                     <li><a class="button" href="newSongs.html">New</a></li>
                     <li><a class="button" href="allSongs.html">All</a></li>
-                    <div>
-                    <input type="text" id="name" placeholder="Your name here" />
                     <li><a class="button" id="loginButton" onclick="toggleLoginBox()">Log In</a></li>
-                    </div>
                 </ul>
             </nav>
         </div>
@@ -99,9 +96,9 @@
 
     <div class="body-flex">
         <div class="song-box">
-            <img class="songElement" src="pictures/Play.png" alt="A Play Arrow">
+            <img id="africa" class="songElement" src="pictures/Play.png" alt="A Play Arrow">
             <p class="songElement">
-                <a href="individualSong.html">Muse - Madness</a>
+                <a href="individualSong.html">Toto - Africa</a>
             </p>
             <div class="star-rating songElement">
                 <span class="star" data-value="1">&#9733;</span>
@@ -114,8 +111,8 @@
         </div>
 
         <div class="song-box">
-            <img src="pictures/Play.png" alt="A Play Arrow">
-            <a href="individualSong.html">Metallica - Nothing Else Matters</a>
+            <img id="ariaMath" class="songElement" src="pictures/Play.png" alt="A Play Arrow">
+            <a href="individualSong.html">C418 - Aria <Math></Math></a>
             <div class="star-rating">
                 <span class="star" data-value="1">&#9733;</span>
                 <span class="star" data-value="2">&#9733;</span>
@@ -159,3 +156,4 @@
         document.getElementById("myBar").style.width = scrolled + "%";
     }
 </script>
+<script src="scripts/playMusic.js"></script>

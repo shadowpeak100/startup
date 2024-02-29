@@ -16,3 +16,14 @@ function toggleLoginBox() {
         loginBox.style.display = "none";
     }
 }
+
+window.onload = function() {
+    var userName = localStorage.getItem('userName');
+
+    if (userName) {
+        var loginButton = document.getElementById("loginButton");
+        if (loginButton) {
+            loginButton.textContent = "Welcome, " + userName;
+        }
+    }
+};

@@ -384,5 +384,71 @@ Things to review:
 ![img_11.png](pictures/img_11.png)
   * prints A D B
 
+## 5.3 Web services & Node.js ##
+Ryan Dahl - Created node.js
+He dropped out and moved to Chile, then released node.js in 2009
+
+### What is Node.js ###
+Wrapped JS in an application to execute it, puts response out to console window
+Important things:
+* NVM - node version manager
+* Node - javaScript runtime
+* NPM - Node package manager
+
+npm install - installs what you need to run an application
+You want to ignore what you pulled down with your .gitignore
+
+## Deployment and environments ##
+### Environments ###
+we have the development environment in our IDE integrated with git. Then you have a deploy
+script that pushes to production. 
+
+In a more complex environment, you have your development environment, a staging environment
+as well as a production environment. Staging allows you to do integration tests.
+
+### Interruptive deployment ###
+This is like what we do on the website where things are disrupted as clients could be interacting
+on the website. Stop, replace, start, etc
+
+### Rolling drain and replace ###
+Multiple servers with load balance - drain, stop, start... repeat.
+There are multiple servers with a load balancer, have all requests go to other servers and do one server's work.
+There must be compatability between the versions.
+
+### Canary ###
+Gradual, put up a small percent of your server on the new version and monitor for errors.
+
+### Blue/green ###
+Blue is the current previous release. Green is the new one, you keep them both up in case you need to swap
+
+### A/B ###
+used for evaluating if a feature is good. Route some percent of the traffic using DNS
+to the new environment, do some evaluation, then decide if it will become the new feature.
+Some customers get one version, versus another.
+
+## Storage ##
+### Uploading files to the server ###
+Frontend - file input
+backend - multer
+
+frontend:
+```angular2html
+<input
+    type="file"
+    id="fileInput"
+    name="file"
+    accept=".png, .jpeg, jpg"
+    onchange="uploadFile(this)"
+>
+```
+The rest are in the slides
+
+multer limits are for max file size, in bytes
+
+Don't store state on a server. Servers are transient. 
+
+To handle storage use S3, 
+
+
 
 

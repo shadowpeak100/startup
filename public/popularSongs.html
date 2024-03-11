@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
     <link rel="icon" href="pictures/SoundWaves.png" />
-    <link rel="stylesheet" type="text/css" href="./styles/styles.css">
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,7 +50,6 @@
             </nav>
         </div>
 
-<!--        login box-->
         <div class="login-box" id="loginBox">
             <h2>Login</h2>
             <form>
@@ -80,20 +79,7 @@
 <!--Actual Body-->
 
 <main>
-
-    <div id="hero">
-        <video loop muted autoplay preload="auto">
-            <source src="pictures/turntable.mp4" type="video/mp4">
-            Your Browser does not support video
-        </video>
-        <div class="caption">
-            <h1>Music // Movement</h1>
-            <h2>Bridging hobbies, coding and hardware together</h2>
-        </div>
-    </div>
-
-    <div class="articleTexture"></div>
-
+    <p>The following content is sorted based off download count</p>
     <div class="body-flex">
         <div class="song-box">
             <img id="africa" class="songElement" src="pictures/Play.png" alt="A Play Arrow">
@@ -122,10 +108,23 @@
             </div>
             <img src="pictures/Download.png" alt="Download Symbol">
         </div>
-        <p>3rd party service for recent music news</p>
-        <h1>RSS Feed Display</h1>
-        <ul id="rssFeed"></ul>
+
+        <div class="song-box">
+            <img id="fireflies" class="songElement" src="pictures/Play.png" alt="A Play Arrow">
+            <a href="individualSong.html">Owl City - Fireflies</a>
+            <div class="star-rating">
+                <span class="star" data-value="1">&#9733;</span>
+                <span class="star" data-value="2">&#9733;</span>
+                <span class="star" data-value="3">&#9733;</span>
+                <span class="star" data-value="4">&#9733;</span>
+                <span class="star" data-value="5">&#9733;</span>
+            </div>
+            <img src="pictures/Download.png" alt="Download Symbol">
+        </div>
     </div>
+
+
+
 
 </main>
 
@@ -159,4 +158,3 @@
     }
 </script>
 <script src="scripts/playMusic.js"></script>
-<script src="scripts/rssFeedForWebsocket.js"></script>

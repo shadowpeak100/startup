@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
     <link rel="icon" href="pictures/SoundWaves.png" />
-    <link rel="stylesheet" type="text/css" href="./styles/styles.css">
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,6 +48,7 @@
                     <li><a class="button" id="loginButton" onclick="toggleLoginBox()">Log In</a></li>
                 </ul>
             </nav>
+
         </div>
 
         <div class="login-box" id="loginBox">
@@ -80,18 +81,12 @@
 
 <main>
     <div class="body-flex">
-        <h1>Save Object to Local Storage</h1>
-
-        <label for="textFile">Text File:</label>
-        <input class="button" type="file" id="textFile"><br><br>
-
-        <label for="mp3File">MP3 File:</label>
-        <input class="button" type="file" id="mp3File"><br><br>
-
-        <label for="songTitle">Title:</label>
-        <textarea id="songTitle" rows="2" cols="50"></textarea><br><br>
-
-        <button id="saveButton">Save Object</button>
+        <img class="profile" src="pictures/Brayden.jpg" alt="A picture of a very guapo dude repelling">
+            <h3>About me</h3>
+            <p>Hi! My name is Brayden. I am currently a CS student at BYU and enjoy programming in Go the most. I love concurrency,
+                data processing and learning how memory works below the code. I also like side projects, like this that teach some wicked
+                cool hardware and software coordination with this clean HTML website. When I'm not coding, catch me outside repelling,
+                skiing, hiking or on some random adventure. Thanks for visiting the site!</p>
     </div>
 </main>
 
@@ -124,5 +119,3 @@
         document.getElementById("myBar").style.width = scrolled + "%";
     }
 </script>
-<script src="scripts/playMusic.js"></script>
-<script src="scripts/saveContent.js"></script>

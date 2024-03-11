@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
     <link rel="icon" href="pictures/SoundWaves.png" />
-    <link rel="stylesheet" type="text/css" href="./styles/styles.css">
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -79,53 +79,20 @@
 <!--Actual Body-->
 
 <main>
-    <p>The following content is sorted based off download count</p>
     <div class="body-flex">
-        <div class="song-box">
-            <img id="africa" class="songElement" src="pictures/Play.png" alt="A Play Arrow">
-            <p class="songElement">
-                <a href="individualSong.html">Toto - Africa</a>
-            </p>
-            <div class="star-rating songElement">
-                <span class="star" data-value="1">&#9733;</span>
-                <span class="star" data-value="2">&#9733;</span>
-                <span class="star" data-value="3">&#9733;</span>
-                <span class="star" data-value="4">&#9733;</span>
-                <span class="star" data-value="5">&#9733;</span>
-            </div>
-            <img class="songElement" src="pictures/Download.png" alt="Download Symbol">
-        </div>
+        <h1>Save Object to Local Storage</h1>
 
-        <div class="song-box">
-            <img id="ariaMath" class="songElement" src="pictures/Play.png" alt="A Play Arrow">
-            <a href="individualSong.html">C418 - Aria <Math></Math></a>
-            <div class="star-rating">
-                <span class="star" data-value="1">&#9733;</span>
-                <span class="star" data-value="2">&#9733;</span>
-                <span class="star" data-value="3">&#9733;</span>
-                <span class="star" data-value="4">&#9733;</span>
-                <span class="star" data-value="5">&#9733;</span>
-            </div>
-            <img src="pictures/Download.png" alt="Download Symbol">
-        </div>
+        <label for="textFile">Text File:</label>
+        <input class="button" type="file" id="textFile"><br><br>
 
-        <div class="song-box">
-            <img id="fireflies" class="songElement" src="pictures/Play.png" alt="A Play Arrow">
-            <a href="individualSong.html">Owl City - Fireflies</a>
-            <div class="star-rating">
-                <span class="star" data-value="1">&#9733;</span>
-                <span class="star" data-value="2">&#9733;</span>
-                <span class="star" data-value="3">&#9733;</span>
-                <span class="star" data-value="4">&#9733;</span>
-                <span class="star" data-value="5">&#9733;</span>
-            </div>
-            <img src="pictures/Download.png" alt="Download Symbol">
-        </div>
+        <label for="mp3File">MP3 File:</label>
+        <input class="button" type="file" id="mp3File"><br><br>
+
+        <label for="songTitle">Title:</label>
+        <textarea id="songTitle" rows="2" cols="50"></textarea><br><br>
+
+        <button id="saveButton">Save Object</button>
     </div>
-
-
-
-
 </main>
 
 <!--Footer-->
@@ -158,3 +125,4 @@
     }
 </script>
 <script src="scripts/playMusic.js"></script>
+<script src="scripts/saveContent.js"></script>

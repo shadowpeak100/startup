@@ -50,3 +50,10 @@ login button will allow functionality in the future but has been put in place fo
 The website now has the ability to play music, support for an RSS feed (for the websocket) and can save music objects then
 put them into the all songs area. The new songs file was changed to new song, which allows for the uploading of information.
 There is now also a login function that displays the username when signed in. This data is stored in local storage for now.
+
+## Express ##
+3/11/24
+
+The website now hosts everything over express. It can stand on its own and download/display files. The ability to download
+a previously uploaded file has been added as well. There is now a third party service call to get a chuck norris joke because
+all APIs that were relevant to the website cost money I didn't want to pay.

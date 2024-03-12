@@ -24,3 +24,29 @@ function displayRSSFeed(rssFeedData) {
         rssFeedContainer.appendChild(listItem);
     });
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('https://www.allmusic.com/rss/newsletter')
+        .then(response => response.text())
+        .then(xml => {
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(xml, 'text/xml');
+            const items = xmlDoc.querySelectorAll('item');
+
+            const feedContainer = document.getElementById('rss-feed');
+            items.forEach(item => {
+                const title = item.querySelector('title').textContent;
+                const description = item.querySelector('description').textContent;
+                const pubDate = item.querySelector('dc\\:date').textContent;
+
+                const feedItem = document.createElement('div');
+                feedItem.innerHTML = `
+                    <h2>${title}</h2>
+                    <p>${description}</p>
+                    <p>Published Date: ${pubDate}</p>
+                `;
+                feedContainer.appendChild(feedItem);
+            });
+        })
+        .catch(error => console.error('Error fetching RSS feed:', error));
+});

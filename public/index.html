@@ -122,9 +122,10 @@
             </div>
             <img src="pictures/Download.png" alt="Download Symbol">
         </div>
-        <p>3rd party service for recent music news</p>
-        <h1>RSS Feed Display</h1>
-        <ul id="rssFeed"></ul>
+
+        <h1>Chuck Norris Jokes</h1>
+        <button id="getJokeButton">Get Joke</button>
+        <div id="jokeContainer"></div>
     </div>
 
 </main>
@@ -157,6 +158,19 @@
         var scrolled = (winScroll / height) * 100;
         document.getElementById("myBar").style.width = scrolled + "%";
     }
+</script>
+
+<script>
+    async function fetchChuckNorrisJoke() {
+        try {
+            const response = await fetch('/chuck-norris-joke');
+            const data = await response.json();
+            document.getElementById('jokeContainer').innerText = data.joke;
+        } catch (error) {
+            console.error('Error fetching Chuck Norris joke:', error);
+        }
+    }
+    document.getElementById('getJokeButton').addEventListener('click', fetchChuckNorrisJoke);
 </script>
 <script src="scripts/playMusic.js"></script>
 <script src="scripts/rssFeedForWebsocket.js"></script>

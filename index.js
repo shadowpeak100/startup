@@ -2,7 +2,8 @@ const express = require('express');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
-
+const router = express.Router();
+const axios = require('axios');
 const app = express();
 const port = process.argv.length > 2 ? process.argv[2] : 1313;
 
@@ -94,6 +95,25 @@ app.get('/uploads/:filename', (req, res) => {
         }
     });
 });
+
+app.get('/chuck-norris-joke', async (req, res) => {
+    try {
+        // Fetch a Chuck Norris joke from the API
+        const response = await axios.get('https://api.chucknorris.io/jokes/random');
+
+        // Extract the joke from the response
+        const joke = response.data.value;
+
+        // Send the joke as a JSON response
+        res.json({ joke });
+    } catch (error) {
+        console.error('Error fetching Chuck Norris joke:', error);
+        res.status(500).json({ error: 'An error occurred while fetching Chuck Norris joke' });
+    }
+});
+
+
+module.exports = router;
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);

@@ -15,3 +15,11 @@ firefliesPlayButton.addEventListener('click', function() {
     var audio = new Audio('music/StepperFireflies.mp3');
     audio.play();
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const downloadButton = document.getElementById('downloadButton');
+    downloadButton.addEventListener('click', function() {
+        const songTitle = encodeURIComponent('Title of the Song'); // Get the title of the song
+        window.location.href = `/download/${songTitle}`;
+    });
+});

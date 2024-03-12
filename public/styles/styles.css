@@ -400,6 +400,34 @@ footer {
     width: 0%;
 }
 
+#jokeContainer {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    min-height: 100px;
+}
+
+/* Button styles */
+#getJokeButton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#getJokeButton:hover {
+    background-color: #0056b3;
+}
+
 @media (min-width: 600px) {
     .main-menu nav {
         display: flex;

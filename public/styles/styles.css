@@ -448,6 +448,17 @@ footer {
         margin-bottom: 10px;
     }
 
+    .song-box p,
+    .song-box a {
+        flex: 2; /* Adjust the value as needed */
+        margin: 0; /* Remove default margins */
+    }
+
+    /* Adjust the width of image elements */
+    .song-box img {
+        flex: 1; /* Adjust the value as needed */
+    }
+
     .navbar svg {
         order: -1;
     }

@@ -428,6 +428,16 @@ footer {
     background-color: #0056b3;
 }
 
+.quote-box {
+    display: none;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.quote-box.has-text {
+    display: block; 
+}
+
 @media (min-width: 600px) {
     .main-menu nav {
         display: flex;

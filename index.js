@@ -10,6 +10,23 @@ const port = process.argv.length > 2 ? process.argv[2] : 1313;
 app.use(express.json());
 app.use(express.static('public'));
 
+const { MongoClient } = require('mongodb');
+const userName = 'username';
+const password = 'password';
+const hostname = 'yourdb.mongodb.com';
+const url = `mongodb+srv://${userName}:${password}@${hostname}`;
+const client = new MongoClient(url);
+const db = client.db('startup');
+
+client
+    .connect()
+    .then(() => db.command({ ping: 1 }))
+    .then(() => console.log(`Connected`))
+    .catch((ex) => {
+        console.log(`Error with ${url} because ${ex.message}`);
+        process.exit(1);
+    });
+
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'uploads/')

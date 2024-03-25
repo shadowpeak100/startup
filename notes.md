@@ -449,6 +449,55 @@ Don't store state on a server. Servers are transient.
 
 To handle storage use S3, 
 
+## OWASP 10 ##
+Open worldwide application security project
 
-
-
+Top 10 security flaws:
+1) Broken Access Control
+- Least privilege access violation
+- URL bypass control (/payment:accountId)
+- Resource path allows access (../../../etc/password)
+2) Cryptographic Failures
+- Transmitting data as clear text
+- Not encrypting at rest or transit
+- Weak cryptography (SHA1, MD5)
+- Misused cryptography (no salt, wrong params)
+3) Injection attack
+- Not sanitizing data and users and inject plaintext database attacks
+4) Insecure design
+- Not aware of best practices
+- Unlimited trial accounts
+- Customer data not segmented
+- single layer defense
+5) Security misconfiguration
+- development info exposed
+- using default configurations
+- unnecessary features installed
+- system not hardened
+6) Vulnerable Components
+- Unnecessary/unused packages imported
+- Untrusted/verified sources
+- Out of data software
+- Not tracking vulnerability bulletins
+- Package versions not locked
+7) ID and Auth Failures
+- Credential stuffing (compromised list)
+- Brute force attacks (guess a password)
+- Permitting weak passwords
+- Weak credential recovery
+- Credentials in URL
+- Not expiring auth tokens
+8) Software Integrity Failures
+- unverified CDN usage
+- unverified packages (npm install)
+- unverified updates
+- Unsecure CD/CI platforms
+9) logging failures
+- not logging critical requests
+- not monitoring system performance
+- logs not audited, automatic or manual
+- logs not stored centrally
+- no real-time response
+10) server side request forgery
+- servers have to execute a URL to get an image, or outside resource. Instead we can inject a URL with data we want, 
+then we can make the server execute this.

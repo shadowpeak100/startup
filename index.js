@@ -10,12 +10,14 @@ const port = process.argv.length > 2 ? process.argv[2] : 1313;
 app.use(express.json());
 app.use(express.static('public'));
 
+//mongo stuff
 const { MongoClient } = require('mongodb');
 const userName = 'username';
 const password = 'password';
 const hostname = 'yourdb.mongodb.com';
 const url = `mongodb+srv://${userName}:${password}@${hostname}`;
 const client = new MongoClient(url);
+const collection = client.db('startup').collection('musicMovement');
 const db = client.db('startup');
 
 client
@@ -135,3 +137,30 @@ module.exports = router;
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
+//
+// const express = require('express');
+// const cookieParser = require('cookie-parser');
+// const uuid = require('uuid');
+//
+// const app = express();
+// app.use(cookieParser());
+//
+// app.get('/cookie', (req, res) => {
+//     const token = uuid.v4();
+//     res.cookie('token', token, {
+//         secure: true,
+//         httpOnly: true,
+//         sameSite: 'strict',
+//     });
+//
+//     res.send({ token: token });
+// });
+//
+// app.get('*', (req, res) => {
+//     const token = req?.cookies.token;
+//     res.send({ token: token });
+// });
+//
+// app.listen(3000, () => {
+//     console.log('listening 3000');
+// });

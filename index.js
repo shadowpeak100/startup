@@ -29,6 +29,34 @@ client
         process.exit(1);
     });
 
+//insert an entry
+const house = {
+    name: 'Beachfront views',
+    summary: 'From your bedroom to the beach, no shoes required',
+    property_type: 'Condo',
+    beds: 1,
+};
+await collection.insertOne(house);
+
+//find an entry
+const cursor = collection.find();
+const rentals = await cursor.toArray();
+rentals.forEach((i) => console.log(i));
+
+//find with search and sort parameters
+const query = { property_type: 'Condo', beds: { $lt: 2 } };
+
+const options = {
+    sort: { price: -1 },
+    limit: 10,
+};
+
+const cursor = collection.find(query, options);
+const rentals = await cursor.toArray();
+rentals.forEach((i) => console.log(i));
+
+//end mongo stuff
+
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'uploads/')

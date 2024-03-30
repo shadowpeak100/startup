@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    app = new App();
+    let app = new App(false);
     const textFileInput = document.getElementById('textFile');
     const mp3FileInput = document.getElementById('mp3File');
     const titleInput = document.getElementById('songTitle');
@@ -29,44 +29,34 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => {
                 if (response.ok) {
                     console.log('Files uploaded successfully.');
-                    // You may want to handle success behavior here
                     // Send WebSocket message
                     app.broadcastEvent("NewSongUploaded", "NewSongUploaded", {title: titleInput.value})
-                    // const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
-                    // const socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
-                    //
-                    // socket.onopen = () => {
-                    //     const newSongMsg = {
-                    //         type: 'NewSongUploaded',
-                    //         title: title
-                    //     };
-                    //     socket.send(JSON.stringify(newSongMsg));
-                    //     socket.close();
-                    // };
                 } else {
                     console.error('Failed to upload files.');
-                    // You may want to handle error behavior here
                 }
             })
             .catch(error => {
                 console.error('Error uploading files:', error);
-                // You may want to handle error behavior here
             });
     });
 });
 
 class App {
     socket;
-    constructor() {
+    silent;
+    constructor(s) {
         this.configureWebSocket();
         this.bindEventListeners();
+        this.silent = s;
     }
 
     configureWebSocket() {
         const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
         this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
         this.socket.onopen = (event) => {
-            this.displayMsg('system', 'websocket', 'connected');
+            if (!this.silent){
+                this.displayMsg('system', 'websocket', 'connected');
+            }
         };
         this.socket.onclose = (event) => {
             this.displayMsg('system', 'websocket', 'disconnected');
@@ -135,4 +125,4 @@ class App {
     }
 }
 
-new App();
+new App(true);

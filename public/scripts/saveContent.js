@@ -33,10 +33,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     app.broadcastEvent("NewSongUploaded", "NewSongUploaded", {title: titleInput.value})
                 } else {
                     console.error('Failed to upload files.');
+                    app.broadcastEvent("NewSongUploaded", "NewSongUploaded", {title: titleInput.value})
                 }
             })
             .catch(error => {
                 console.error('Error uploading files:', error);
+                app.broadcastEvent("NewSongUploaded", "NewSongUploaded", {title: titleInput.value})
             });
     });
 });

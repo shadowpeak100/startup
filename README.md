@@ -57,3 +57,10 @@ There is now also a login function that displays the username when signed in. Th
 The website now hosts everything over express. It can stand on its own and download/display files. The ability to download
 a previously uploaded file has been added as well. There is now a third party service call to get a chuck norris joke because
 all APIs that were relevant to the website cost money I didn't want to pay.
+
+## WebSockets ##
+3/29/24
+
+Websocket functionality conveys when a user uploads a new song on the "new" page. When a user uploads a song, a message 
+pops up "new song uploaded new song: <Title here> just added, check it out!" This allows users to see when new items of 
+interest are added so they can be amongst the first to check out the new hits!

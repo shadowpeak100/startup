@@ -4,59 +4,65 @@ const path = require('path');
 const fs = require('fs');
 const router = express.Router();
 const axios = require('axios');
+const WebSocket = require('ws');
+
 const app = express();
+const server = http.createServer(app);
 const port = process.argv.length > 2 ? process.argv[2] : 1313;
+
+const webSocketServer = new WebSocket.Server
 
 app.use(express.json());
 app.use(express.static('public'));
 
 //mongo stuff
-const { MongoClient } = require('mongodb');
-const userName = 'username';
-const password = 'password';
-const hostname = 'yourdb.mongodb.com';
-const url = `mongodb+srv://${userName}:${password}@${hostname}`;
-const client = new MongoClient(url);
-const collection = client.db('startup').collection('musicMovement');
-const db = client.db('startup');
-
-client
-    .connect()
-    .then(() => db.command({ ping: 1 }))
-    .then(() => console.log(`Connected`))
-    .catch((ex) => {
-        console.log(`Error with ${url} because ${ex.message}`);
-        process.exit(1);
-    });
-
-//insert an entry
-const house = {
-    name: 'Beachfront views',
-    summary: 'From your bedroom to the beach, no shoes required',
-    property_type: 'Condo',
-    beds: 1,
-};
-await collection.insertOne(house);
-
-//find an entry
-const cursor = collection.find();
-const rentals = await cursor.toArray();
-rentals.forEach((i) => console.log(i));
-
-//find with search and sort parameters
-const query = { property_type: 'Condo', beds: { $lt: 2 } };
-
-const options = {
-    sort: { price: -1 },
-    limit: 10,
-};
-
-const cursor = collection.find(query, options);
-const rentals = await cursor.toArray();
-rentals.forEach((i) => console.log(i));
+// const { MongoClient } = require('mongodb');
+// const userName = 'braydenlewis100';
+// const password = 'UrpvqTBBRa81KsSZ';
+// const hostname = 'cluster0.o1pphhk.mongodb.net';
+// const url = `mongodb+srv://${userName}:${password}@${hostname}`;
+// const client = new MongoClient(url);
+// const collection = client.db('startup').collection('musicMovement');
+// const db = client.db('startup');
+//
+// client
+//     .connect()
+//     .then(() => db.command({ ping: 1 }))
+//     .then(() => console.log(`Connected`))
+//     .catch((ex) => {
+//         console.log(`Error with ${url} because ${ex.message}`);
+//         process.exit(1);
+//     });
+//
+// //insert an entry
+// const house = {
+//     name: 'Beachfront views',
+//     summary: 'From your bedroom to the beach, no shoes required',
+//     property_type: 'Condo',
+//     beds: 1,
+// };
+// await collection.insertOne(house);
+//
+// //find an entry
+// const cursor = collection.find();
+// const rentals = await cursor.toArray();
+// rentals.forEach((i) => console.log(i));
+//
+// //find with search and sort parameters
+// const query = { property_type: 'Condo', beds: { $lt: 2 } };
+//
+// const options = {
+//     sort: { price: -1 },
+//     limit: 10,
+// };
+//
+// const cursor = collection.find(query, options);
+// const rentals = await cursor.toArray();
+// rentals.forEach((i) => console.log(i));
 
 //end mongo stuff
 
+//multer file storeage
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'uploads/')
@@ -65,12 +71,12 @@ const storage = multer.diskStorage({
         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
     }
 });
-
-var apiRouter = express.Router();
-app.use(`/api`, apiRouter);
 const upload = multer({ storage: storage });
 
-//add routers here:
+//routers
+var apiRouter = express.Router();
+app.use(`/api`, apiRouter);
+
 app.post('/api/upload', upload.fields([{ name: 'textFile' }, { name: 'mp3File' }]), (req, res) => {
     try {
         const { title, rating, comments } = req.body;
@@ -143,6 +149,7 @@ app.get('/uploads/:filename', (req, res) => {
     });
 });
 
+//third party call
 app.get('/chuck-norris-joke', async (req, res) => {
     try {
         // Fetch a Chuck Norris joke from the API

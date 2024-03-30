@@ -501,3 +501,33 @@ Top 10 security flaws:
 10) server side request forgery
 - servers have to execute a URL to get an image, or outside resource. Instead we can inject a URL with data we want, 
 then we can make the server execute this.
+
+## REACT ##
+Supposed to be a web framework which does the following:
+- Simplify common patterns
+- Provide common components
+- Improve preformance
+- Increase device coverage
+
+### The creator: Jordan Walke ###
+
+### JSX ###
+Combination of HTML and javascript all in one file
+There is a transpiler that converts them to JS and HTML, this is Babel
+
+### Commonly used code ###
+You can inject components in JSX, dropping it in to different areas where it may be used over and over, like headers.
+
+React will have libraries that you have to import in order to do things like inject to a dom.
+
+you can make elements using: 
+
+```
+const Hi = () => {
+  return <p>Hello World</p>
+};
+ReactDom.render(<hi/>,document.querySelector("#root"));
+```
+
+There are also component functions where you can pass in a phrase which will take place of a variable in HTML rendering
+

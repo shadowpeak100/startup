@@ -52,18 +52,6 @@ app.post('/api/upload', upload.fields([{ name: 'textFile' }, { name: 'mp3File' }
         console.error('Error uploading files:', error);
         res.status(500).send('Error uploading files: ' + error.message);
     }
-
-    //broadcast to websocket here
-    // Broadcast WebSocket message
-    // const newSong = {
-    //     title: req.body.title,
-    //     link: `/path/to/uploaded/song/${req.body.title}`,
-    // };
-    // broadcast({
-    //     from: 'server',
-    //     type: 'NewSongUploaded',
-    //     value: newSong,
-    // });
 });
 
 //handle showing the uploaded files

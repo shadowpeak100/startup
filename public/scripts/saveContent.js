@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.log('Files uploaded successfully.');
                     // You may want to handle success behavior here
                     // Send WebSocket message
-                    app.broadcastEvent("We have an event!", "Contents", {})
+                    app.broadcastEvent("NewSongUploaded", "NewSongUploaded", {title: titleInput.value})
                     // const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
                     // const socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
                     //
@@ -56,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 class App {
+    socket;
     constructor() {
         this.configureWebSocket();
         this.bindEventListeners();
@@ -74,9 +75,7 @@ class App {
         this.socket.onmessage = async (event) => {
             const msg = JSON.parse(await event.data.text());
             if (msg.type === 'NewSongUploaded') {
-                this.displayMsg('player', msg.from, `New song: ${msg.value.title} just added, check it out!`);
-            } else if (msg.type === 'GameStartEvent') {
-                this.displayMsg('player', msg.from, `started a new game`);
+                this.displayMsg('user', msg.from, `New song: ${msg.value.title} just added, check it out!`);
             }
         };
     }
@@ -120,10 +119,10 @@ class App {
     }
 
     displayMsg(cls, from, msg) {
-        const chatText = document.querySelector('#player-messages');
-        chatText.innerHTML =
+        const uploadedMessages = document.querySelector('#player-messages');
+        uploadedMessages.innerHTML =
             `<div class="event"><span class="${cls}-event">${from}</span> ${msg}</div>` +
-            chatText.innerHTML;
+            uploadedMessages.innerHTML;
     }
 
     broadcastEvent(from, type, value) {

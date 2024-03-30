@@ -61,7 +61,9 @@ class App {
             }
         };
         this.socket.onclose = (event) => {
-            this.displayMsg('system', 'websocket', 'disconnected');
+            if (!this.silent){
+                this.displayMsg('system', 'websocket', 'disconnected');
+            }
         };
 
         this.socket.onmessage = async (event) => {

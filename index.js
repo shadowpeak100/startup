@@ -5,62 +5,21 @@ const fs = require('fs');
 const router = express.Router();
 const axios = require('axios');
 const WebSocket = require('ws');
+const {peerProxy} = require("./peerProxy");
 
 const app = express();
-const server = http.createServer(app);
 const port = process.argv.length > 2 ? process.argv[2] : 1313;
-
-const webSocketServer = new WebSocket.Server
 
 app.use(express.json());
 app.use(express.static('public'));
 
-//mongo stuff
-// const { MongoClient } = require('mongodb');
-// const userName = 'braydenlewis100';
-// const password = 'UrpvqTBBRa81KsSZ';
-// const hostname = 'cluster0.o1pphhk.mongodb.net';
-// const url = `mongodb+srv://${userName}:${password}@${hostname}`;
-// const client = new MongoClient(url);
-// const collection = client.db('startup').collection('musicMovement');
-// const db = client.db('startup');
-//
-// client
-//     .connect()
-//     .then(() => db.command({ ping: 1 }))
-//     .then(() => console.log(`Connected`))
-//     .catch((ex) => {
-//         console.log(`Error with ${url} because ${ex.message}`);
-//         process.exit(1);
-//     });
-//
-// //insert an entry
-// const house = {
-//     name: 'Beachfront views',
-//     summary: 'From your bedroom to the beach, no shoes required',
-//     property_type: 'Condo',
-//     beds: 1,
-// };
-// await collection.insertOne(house);
-//
-// //find an entry
-// const cursor = collection.find();
-// const rentals = await cursor.toArray();
-// rentals.forEach((i) => console.log(i));
-//
-// //find with search and sort parameters
-// const query = { property_type: 'Condo', beds: { $lt: 2 } };
-//
-// const options = {
-//     sort: { price: -1 },
-//     limit: 10,
-// };
-//
-// const cursor = collection.find(query, options);
-// const rentals = await cursor.toArray();
-// rentals.forEach((i) => console.log(i));
-
-//end mongo stuff
+const broadcast = (message) => {
+    webSocketServer.clients.forEach((client) => {
+        if (client.readyState === WebSocket.OPEN) {
+            client.send(JSON.stringify(message));
+        }
+    });
+};
 
 //multer file storeage
 const storage = multer.diskStorage({
@@ -88,11 +47,23 @@ app.post('/api/upload', upload.fields([{ name: 'textFile' }, { name: 'mp3File' }
         console.log('Rating:', rating);
         console.log('Comments:', comments);
 
-        res.send('Files uploaded successfully.');
+        res.status(200).send('Files uploaded successfully.');
     } catch (error) {
         console.error('Error uploading files:', error);
         res.status(500).send('Error uploading files: ' + error.message);
     }
+
+    //broadcast to websocket here
+    // Broadcast WebSocket message
+    // const newSong = {
+    //     title: req.body.title,
+    //     link: `/path/to/uploaded/song/${req.body.title}`,
+    // };
+    // broadcast({
+    //     from: 'server',
+    //     type: 'NewSongUploaded',
+    //     value: newSong,
+    // });
 });
 
 //handle showing the uploaded files
@@ -169,9 +140,12 @@ app.get('/chuck-norris-joke', async (req, res) => {
 
 module.exports = router;
 
-app.listen(port, () => {
+const httpService = app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
+
+peerProxy(httpService)
+
 //
 // const express = require('express');
 // const cookieParser = require('cookie-parser');

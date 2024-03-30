@@ -13,10 +13,11 @@ class App {
         this.socket.onclose = (event) => {
             this.displayMsg('system', 'websocket', 'disconnected');
         };
+
         this.socket.onmessage = async (event) => {
             const msg = JSON.parse(await event.data.text());
             if (msg.type === 'NewSongUploaded') {
-                this.displayMsg('player', msg.from, `<a href="${msg.value.link}" target="_blank">${msg.value.title}</a> uploaded a new song`);
+                this.displayMsg('player', msg.from, `New song: ${msg.value.title} just added, check it out!`);
             } else if (msg.type === 'GameStartEvent') {
                 this.displayMsg('player', msg.from, `started a new game`);
             }

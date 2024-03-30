@@ -424,8 +424,16 @@ footer {
     transition: background-color 0.3s ease;
 }
 
+
 #getJokeButton:hover {
     background-color: var(--orangey);
+}
+
+#player-messages {
+    position: fixed;
+    top: 120px;
+    right: 0;
+    z-index: 1000; /* Optional: if you want it to appear on top of other elements */
 }
 
 .quote-box {
@@ -435,7 +443,7 @@ footer {
 }
 
 .quote-box.has-text {
-    display: block; 
+    display: block;
 }
 
 @media (min-width: 600px) {

@@ -531,3 +531,35 @@ ReactDom.render(<hi/>,document.querySelector("#root"));
 
 There are also component functions where you can pass in a phrase which will take place of a variable in HTML rendering
 
+## React Router ##
+Duplicated HTML elements can be stored like a variable, like headers or footers
+You can have buttons that replace elements of the Dom element when you click a button
+
+Router Component:
+```angular2html
+<BrowserRouter>
+    <NavLink to='/'>Home</NavLink>
+    <Routes>
+      <Route path='/' element={<Home />} exact />
+    </Routes>
+</BrowserRouter>
+```
+
+## Toolchain
+an NPM command kicks off a process
+`npm rum build`
+Runs Babel -> Minify JS -> Dev HTTP Server -> User access
+
+## React Framework continued
+Reactivity:
+- There is an idea of state, this is how something is temporarily (using state re-renders other parts)
+- doing React.useState returns the state as well as a function to update state
+- Hooks
+- Parameters
+- Using hooks and parameters you can re-render a page for new changes
+- useState - component state
+- useEffect - side effects, a component does something then you have a side effect
+
+
+
+

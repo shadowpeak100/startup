@@ -560,6 +560,65 @@ Reactivity:
 - useState - component state
 - useEffect - side effects, a component does something then you have a side effect
 
+## Typescript ##
+- allows you to use types in javascript!
+- npm install -g typescript (-g does it globally for the entire npm environment, everywhere)
+- you can't run typescript in a browser, you use it to make JS
+- you have to use it everywhere is the downside
+- The nice thing is you can have interfaces!
+- you can do values where they must be one value or another like 'type AuthState = 'authenticated' | 'unauthenticated''
+
+## Performance Monitoring
+- 1 second loading time contributes to 11% less page views, 16% decrease in customer satisfaction, 7% loss in conversions
+- Optimize for real usage, optimize based on data, prioritize bottlenecks, look at download size, use psychology, lazy load
 
 
+## UI frameworks
+- material.io
+- Tailwing
+- Bootstrap
+These create consistency
+
+## Navigation
+- think of how a person is taking a journey through your website
+
+## Colors
+- paletton.com
+- color.adobe.com
+- You don't want something that is too contrasting
+- Get a primary, secondary and focus color
+
+## Typography
+- Serif - have minor strokes on the characters
+- Sans-serif - without minor strokes
+- monospace - same width on all characters
+- handwriting
+- The goal is to lower cognitive load on the user
+- the less fonts the better
+
+### Font size:
+- Page title: 96px
+- Titles: 48-20px
+- Text: 16px
+- Secondary text: 14px
+- Input: 16px
+
+### Character width
+- around 60 characters is a great width
+
+## Iconography
+- use standard icons please!
+
+## Images
+- should add value
+
+## Decision fatigue
+- Hicks law: the time necessary to make a decision increases logarithmically as more decisions are placed before you
+
+## Device awareness
+- With different devices you can have problems with things like navigation taking too much space
+
+## Walls
+- beware walls
+- 
 

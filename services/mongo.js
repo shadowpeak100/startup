@@ -1,8 +1,8 @@
 const { MongoClient } = require('mongodb');
 const config = require('./dbConfig.json');
 
-const dbName = 'sampleData'
-const collectionName = 'house';
+const dbName = 'startupDatabase'
+const collectionName = 'content';
 
 const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}/${dbName}`;
 const client = new MongoClient(url);

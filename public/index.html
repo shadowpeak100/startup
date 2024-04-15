@@ -61,12 +61,19 @@
                     <input type="password" id="passwordInput" name="" required="">
                     <label>Password</label>
                 </div>
-                <a href="#" onclick="login()">
+                <a href="#" onclick="submitData('login')">
                     <span></span>
                     <span></span>
                     <span></span>
                     <span></span>
                     Submit
+                </a>
+                <a href="#" onclick="submitData('register')">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Register
                 </a>
             </form>
         </div>
@@ -184,6 +191,6 @@
     }
     document.getElementById('getJokeButton').addEventListener('click', fetchChuckNorrisJoke);
 </script>
-<script src="scripts/playMusic.js"></script>
 <script src="scripts/login.js"></script>
+<script src="scripts/playMusic.js"></script>
 

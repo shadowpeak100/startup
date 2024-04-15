@@ -6,6 +6,7 @@ const router = express.Router();
 const axios = require('axios');
 const WebSocket = require('ws');
 const {peerProxy} = require("./peerProxy");
+const DB = require('./database.js');
 
 const app = express();
 const port = process.argv.length > 2 ? process.argv[2] : 1313;
@@ -35,6 +36,44 @@ const upload = multer({ storage: storage });
 //routers
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
+
+//login related features
+// CreateAuth token for a new user
+apiRouter.post('/auth/create', async (req, res) => {
+    if (await DB.getUser(req.body.email)) {
+        res.status(409).send({ msg: 'Existing user' });
+    } else {
+        const user = await DB.createUser(req.body.email, req.body.password);
+
+        // Set the cookie
+        setAuthCookie(res, user.token);
+
+        res.send({
+            id: user._id,
+        });
+    }
+});
+
+// GetAuth token for the provided credentials
+apiRouter.post('/auth/login', async (req, res) => {
+    const user = await DB.getUser(req.body.email);
+    if (user) {
+        if (await bcrypt.compare(req.body.password, user.password)) {
+            setAuthCookie(res, user.token);
+            res.send({ id: user._id });
+            return;
+        }
+    }
+    res.status(401).send({ msg: 'Unauthorized' });
+});
+
+// DeleteAuth token if stored in cookie
+apiRouter.delete('/auth/logout', (_req, res) => {
+    res.clearCookie(authCookieName);
+    res.status(204).end();
+});
+//end login related features
+
 
 app.post('/api/upload', upload.fields([{ name: 'textFile' }, { name: 'mp3File' }]), (req, res) => {
     try {
@@ -111,13 +150,10 @@ app.get('/uploads/:filename', (req, res) => {
 //third party call
 app.get('/chuck-norris-joke', async (req, res) => {
     try {
-        // Fetch a Chuck Norris joke from the API
         const response = await axios.get('https://api.chucknorris.io/jokes/random');
 
-        // Extract the joke from the response
         const joke = response.data.value;
 
-        // Send the joke as a JSON response
         res.json({ joke });
     } catch (error) {
         console.error('Error fetching Chuck Norris joke:', error);

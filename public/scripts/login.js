@@ -111,3 +111,7 @@ window.onload = function() {
 };
 
 window.addEventListener('load', updateLoginButtonText);
+
+module.exports = {
+    updateLoginButtonText,
+};

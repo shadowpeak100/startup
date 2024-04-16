@@ -50,23 +50,31 @@
 
         </div>
 
+        <!--        login box-->
         <div class="login-box" id="loginBox">
             <h2>Login</h2>
             <form>
                 <div class="user-box">
-                    <input type="text" id="usernameInput" name="" required="">
+                    <input type="text" id="userName" name="" required="">
                     <label>Username</label>
                 </div>
                 <div class="user-box">
-                    <input type="password" id="passwordInput" name="" required="">
+                    <input type="password" id="userPassword" name="" required="">
                     <label>Password</label>
                 </div>
-                <a href="#" onclick="login()">
+                <a href="#" onclick="loginUser()">
                     <span></span>
                     <span></span>
                     <span></span>
                     <span></span>
-                    Submit
+                    Login
+                </a>
+                <a href="#" onclick="createUser()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Register
                 </a>
             </form>
         </div>
@@ -133,7 +141,9 @@
 </body>
 </html>
 
+<script src="scripts/login.js"></script>
 <script>
+    updateLoginButtonText();
     window.addEventListener("DOMContentLoaded", () => {
         document.querySelector(".menu-icon").addEventListener("click", () => {
             document.querySelector(".main-menu").classList.toggle("menu-show");
@@ -153,5 +163,4 @@
     }
 </script>
 <script src="scripts/playMusic.js"></script>
-<script src="scripts/login.js"></script>
 

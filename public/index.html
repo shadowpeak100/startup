@@ -179,7 +179,9 @@
     }
 </script>
 
+<script src="scripts/login.js"></script>
 <script>
+    updateLoginButtonText();
     async function fetchChuckNorrisJoke() {
         try {
             const response = await fetch('/chuck-norris-joke');
@@ -191,6 +193,5 @@
     }
     document.getElementById('getJokeButton').addEventListener('click', fetchChuckNorrisJoke);
 </script>
-<script src="scripts/login.js"></script>
 <script src="scripts/playMusic.js"></script>
 

@@ -46,6 +46,7 @@ async function loginOrCreate(endpoint) {
 
 function updateLoginButtonText() {
     const loginButton = document.getElementById('loginButton');
+    const buttonPlaceHolder = document.getElementById('buttonPlaceHolder');
 
     const authToken = getCookie('auth');
     const userName = localStorage.getItem('userName');
@@ -53,9 +54,11 @@ function updateLoginButtonText() {
     if (authToken && userName) {
         loginButton.textContent = `Sign out: ${userName}`;
         loginButton.onclick = logout;
+        buttonPlaceHolder.innerHTML = '<button id="saveButton" type="button">Save Object</button>';
     } else {
         loginButton.textContent = 'Log In';
         loginButton.onclick = toggleLoginBox;
+        buttonPlaceHolder.textContent = 'You must be signed in to save a song';
     }
 }
 

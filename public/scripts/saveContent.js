@@ -76,7 +76,7 @@ class App {
 
     bindEventListeners() {
         const saveButton = document.getElementById('saveButton');
-        saveButton.addEventListener('click', () => this.handleUpload());
+        //saveButton.addEventListener('click', () => this.handleUpload());
     }
 
     handleUpload() {

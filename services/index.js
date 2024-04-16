@@ -84,21 +84,27 @@ apiRouter.get('/user/:username', async (req, res) => {
 //end login related features
 
 
-app.post('/api/upload', upload.fields([{ name: 'textFile' }, { name: 'mp3File' }]), (req, res) => {
+app.post('/api/upload', upload.fields([{ name: 'textFile' }, { name: 'mp3File' }]), async (req, res) => {
     try {
         const { title, rating, comments } = req.body;
         const { textFile, mp3File } = req.files;
-        fs.renameSync(textFile[0].path, `uploads/${textFile[0].originalname}`);
-        fs.renameSync(mp3File[0].path, `uploads/${mp3File[0].originalname}`);
 
-        console.log('Title:', title);
-        console.log('Rating:', rating);
-        console.log('Comments:', comments);
+        const song = {
+            textFile: textFile[0].originalname,
+            mp3File: mp3File[0].originalname,
+            title: title,
+            rating: rating || [],
+            comments: comments || [],
+        };
 
-        res.status(200).send('Files uploaded successfully.');
+        await DB.addUpload(song)
+
+        console.log('Files uploaded successfully.');
+
+        res.status(200).json({});
     } catch (error) {
         console.error('Error uploading files:', error);
-        res.status(500).send('Error uploading files: ' + error.message);
+        res.status(500).json({ error: 'Error uploading files: ' + error.message });
     }
 });
 
@@ -120,16 +126,22 @@ app.get('/api/files/:filename', (req, res) => {
     });
 });
 
-app.get('/api/files', (req, res) => {
-    const uploadDir = path.join(__dirname, 'uploads');
-    fs.readdir(uploadDir, (err, files) => {
-        if (err) {
-            console.error('Error reading upload directory:', err);
-            res.status(500).send('Internal server error');
-        } else {
-            res.json(files);
-        }
-    });
+app.get('/api/files', async (req, res) => {
+    try {
+        let files = await DB.getUploads();  // Correct usage of await
+
+        res.json(files.map(file => ({
+            id: file.title,
+            title: file.title,
+            textFile: file.textFile,
+            mp3File: file.mp3File,
+            rating: file.rating,
+            comments: file.comments,
+        })));
+    } catch (error) {
+        console.error('Error fetching files:', error);
+        res.status(500).json({ error: 'Failed to fetch files.' });
+    }
 });
 
 app.get('/download/:filename', (req, res) => {

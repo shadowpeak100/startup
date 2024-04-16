@@ -43,12 +43,12 @@ async function createUser(username, password) {
     return user;
 }
 
-function addUpload(saveObject) {
-    dataCollection.insertOne(saveObject);
+async function addUpload(saveObject) {
+    await dataCollection.insertOne(saveObject);
 }
 
-function getUploads(){
-    const cursor = dataCollection.find();
+async function getUploads() {
+    const cursor = await dataCollection.find();
     return cursor.toArray();
 }
 

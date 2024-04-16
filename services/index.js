@@ -8,6 +8,7 @@ const WebSocket = require('ws');
 const {peerProxy} = require("./peerProxy");
 const DB = require('./database.js');
 const bcrypt = require('bcrypt');
+const {text} = require("express");
 
 const app = express();
 const port = process.argv.length > 2 ? process.argv[2] : 1313;
@@ -86,22 +87,22 @@ apiRouter.get('/user/:username', async (req, res) => {
 
 app.post('/api/upload', upload.fields([{ name: 'textFile' }, { name: 'mp3File' }]), async (req, res) => {
     try {
-        const { title, rating, comments } = req.body;
-        const { textFile, mp3File } = req.files;
+        const { title, rating, comments, textFile, mp3File } = req.body;
+        //const { textFile, mp3File } = req.files;
 
         const song = {
-            textFile: textFile[0].originalname,
-            mp3File: mp3File[0].originalname,
+            textFile: textFile,
+            mp3File: mp3File,
             title: title,
             rating: rating || [],
             comments: comments || [],
         };
 
-        await DB.addUpload(song)
+        await DB.addUpload(song);
 
         console.log('Files uploaded successfully.');
 
-        res.status(200).json({});
+        res.status(200).json({ message: 'Files uploaded successfully.' });
     } catch (error) {
         console.error('Error uploading files:', error);
         res.status(500).json({ error: 'Error uploading files: ' + error.message });

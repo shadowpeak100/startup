@@ -13,14 +13,64 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!title.trim()) {
             alert('Please enter a title.');
             return;
-        }
+        }document.addEventListener('DOMContentLoaded', function() {
+            let app = new App(false);
+            const textFileInput = document.getElementById('textFile');
+            const mp3FileInput = document.getElementById('mp3File');
+            const titleInput = document.getElementById('songTitle');
+            const saveButton = document.getElementById('saveButton');
+
+            saveButton.addEventListener('click', function() {
+                const rating = [];
+                const title = titleInput.value;
+                const comments = [];
+
+                if (!title.trim()) {
+                    alert('Please enter a title.');
+                    return;
+                }
+
+                const formData = new FormData();
+                formData.append('textFile', textFileInput.files[0].name);
+                formData.append('mp3File', mp3FileInput.files[0].name);
+                formData.append('title', title);
+                formData.append('rating', rating)
+                formData.append('comments', comments)
+
+                console.log(textFileInput.files[0].name)
+
+                fetch('/api/upload', {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            return response.json().then(error => {
+                                throw new Error(error.error || 'Failed to upload files.');
+                            });
+                        }
+                    })
+                    .then(data => {
+                        console.log(data.message);
+                        app.broadcastEvent("NewSongUploaded", "NewSongUploaded", {title: titleInput.value});
+                    })
+                    .catch(error => {
+                        console.error('Error uploading files:', error.message);
+                        app.broadcastEvent("NewSongUploaded", "NewSongUploaded", {title: titleInput.value, error: error.message});
+                    });
+            });
+        });
 
         const formData = new FormData();
-        formData.append('textFile', textFileInput.files[0]);
-        formData.append('mp3File', mp3FileInput.files[0]);
+        formData.append('textFile', textFileInput.files[0].name);
+        formData.append('mp3File', mp3FileInput.files[0].name);
         formData.append('title', title);
         formData.append('rating', rating)
         formData.append('comments', comments)
+
+        console.log(textFileInput.files[0].name)
 
         fetch('/api/upload', {
             method: 'POST',
@@ -33,7 +83,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     app.broadcastEvent("NewSongUploaded", "NewSongUploaded", {title: titleInput.value})
                 } else {
                     console.error('Failed to upload files.');
-                    app.broadcastEvent("NewSongUploaded", "NewSongUploaded", {title: titleInput.value})
+                    return response.json().then(error => {
+                        throw new Error(error.error || 'Failed to upload files.');
+                    });
+                    //app.broadcastEvent("NewSongUploaded", "NewSongUploaded", {title: titleInput.value})
                 }
             })
             .catch(error => {

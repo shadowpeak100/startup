@@ -31,16 +31,11 @@ async function loginOrCreate(endpoint) {
 
     if (response.ok) {
         localStorage.setItem('userName', userName);
-        updateLoginButtonText();
         toggleLoginBox();
-        //window.location.href = 'newSong.html';
+        updateLoginButtonText();
+        window.location.href = 'index.html';
     } else {
         console.log("failed logging in or creating user")
-        //const body = await response.json();
-        //const modalEl = document.querySelector('#msgModal');
-        //modalEl.querySelector('.modal-body').textContent = `⚠ Error: ${body.msg}`;
-        //const msgModal = new bootstrap.Modal(modalEl, {});
-        //msgModal.show();
     }
 }
 

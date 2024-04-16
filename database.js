@@ -52,11 +52,17 @@ async function getUploads() {
     return cursor.toArray();
 }
 
+async function deleteAllUploads() {
+    console.log("deleted all")
+    await dataCollection.deleteMany({});
+}
+
 module.exports = {
     getUser,
     getUserByToken,
     createUser,
     addUpload,
     getUploads,
+    deleteAllUploads,
 };
 

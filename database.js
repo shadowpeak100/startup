@@ -1,12 +1,16 @@
 const { MongoClient } = require('mongodb');
 const bcrypt = require('bcrypt');
+const uuid = require('uuid');
 const config = require('./dbConfig.json');
 
 const dbName = 'startupDatabase';
-const collectionName = 'users';
 
-const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}/${dbName}`;
+const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
 const client = new MongoClient(url);
+const db = client.db(dbName)
+
+const userCollection = db.collection('users');
+const dataCollection = db.collection('data');
 
 // This will asynchronously test the connection and exit the process if it fails
 (async function testConnection() {
@@ -17,93 +21,34 @@ const client = new MongoClient(url);
     process.exit(1);
 });
 
-function login() {
-    var username = document.getElementById("usernameInput").value;
-    localStorage.setItem("userName", username);
-
-    var loginButton = document.getElementById("loginButton");
-    if (loginButton) {
-        loginButton.textContent = "Hello, " + username;
-    }
+function getUser(email) {
+    return userCollection.findOne({ email: email });
 }
 
-function toggleLoginBox() {
-    var loginBox = document.getElementById("loginBox");
-    if (loginBox.style.display === "none") {
-        loginBox.style.display = "block";
-    } else {
-        loginBox.style.display = "none";
-    }
+function getUserByToken(token) {
+    return userCollection.findOne({ token: token });
 }
 
-window.onload = function() {
-    var userName = localStorage.getItem('userName');
+async function createUser(email, password) {
+    // Hash the password before we insert it into the database
+    const passwordHash = await bcrypt.hash(password, 10);
 
-    if (userName) {
-        var loginButton = document.getElementById("loginButton");
-        if (loginButton) {
-            loginButton.textContent = "Welcome, " + userName;
-        }
-    }
-};
+    const user = {
+        email: email,
+        password: passwordHash,
+        token: uuid.v4(),
+    };
+    await userCollection.insertOne(user);
 
-function submitData(action) {
-    const username = document.getElementById('usernameInput').value;
-    const password = document.getElementById('passwordInput').value;
-
-    if (action === 'login') {
-        loginUser(username, password);
-    } else if (action === 'register') {
-        registerUser(username, password);
-    }
+    return user;
 }
 
-async function loginUser(username, password) {
-    try {
-        await client.connect();
-        const collection = client.db(dbName).collection(collectionName);
-        const user = await collection.findOne({ username });
-
-        if (!user) {
-            throw new Error('Invalid credentials');
-        }
-
-        const isPasswordValid = await bcrypt.compare(password, user.password);
-        if (!isPasswordValid) {
-            throw new Error('Invalid credentials');
-        }
-
-        console.log('Login successful');
-    } catch (error) {
-        console.error('Error occurred:', error);
-    } finally {
-        await client.close();
-    }
+function addUpload(saveObject) {
+    dataCollection.insertOne(saveObject);
 }
 
-async function registerUser(username, password) {
-    try {
-        await client.connect();
-        const collection = client.db(dbName).collection(collectionName);
-        const existingUser = await collection.findOne({ username });
-
-        if (existingUser) {
-            throw new Error('User already exists');
-        }
-
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-        const newUser = {
-            username,
-            password: hashedPassword,
-        };
-
-        await collection.insertOne(newUser);
-
-        console.log('User registered successfully');
-    } catch (error) {
-        console.error('Error occurred:', error);
-    } finally {
-        await client.close();
-    }
+function getUploads(){
+    const cursor = dataCollection.find();
+    return cursor.toArray();
 }
+

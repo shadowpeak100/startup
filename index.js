@@ -7,10 +7,11 @@ const axios = require('axios');
 const WebSocket = require('ws');
 const {peerProxy} = require("./peerProxy");
 const DB = require('./database.js');
+const bcrypt = require('bcrypt');
 
 const app = express();
 const port = process.argv.length > 2 ? process.argv[2] : 1313;
-
+const authCookieName = 'auth';
 app.use(express.json());
 app.use(express.static('public'));
 
@@ -40,14 +41,11 @@ app.use(`/api`, apiRouter);
 //login related features
 // CreateAuth token for a new user
 apiRouter.post('/auth/create', async (req, res) => {
-    if (await DB.getUser(req.body.username)) {
+    if (await DB.getUser(req.body.userName)) {
         res.status(409).send({ msg: 'Existing user' });
     } else {
-        const user = await DB.createUser(req.body.username, req.body.password);
-
-        // Set the cookie
+        const user = await DB.createUser(req.body.userName, req.body.password);
         setAuthCookie(res, user.token);
-
         res.send({
             id: user._id,
         });
@@ -56,7 +54,7 @@ apiRouter.post('/auth/create', async (req, res) => {
 
 // GetAuth token for the provided credentials
 apiRouter.post('/auth/login', async (req, res) => {
-    const user = await DB.getUser(req.body.email);
+    const user = await DB.getUser(req.body.userName);
     if (user) {
         if (await bcrypt.compare(req.body.password, user.password)) {
             setAuthCookie(res, user.token);
@@ -172,6 +170,15 @@ app.get('/chuck-norris-joke', async (req, res) => {
     }
 });
 
+// setAuthCookie in the HTTP response
+function setAuthCookie(res, authToken) {
+    res.cookie('auth', authToken, {
+        secure: true,
+        httpOnly: false,
+        sameSite: 'strict',
+    });
+    console.log("set cookie successfully")
+}
 
 module.exports = router;
 

@@ -64,3 +64,11 @@ all APIs that were relevant to the website cost money I didn't want to pay.
 Websocket functionality conveys when a user uploads a new song on the "new" page. When a user uploads a song, a message 
 pops up "new song uploaded new song: <Title here> just added, check it out!" This allows users to see when new items of 
 interest are added so they can be amongst the first to check out the new hits!
+
+## Database connections ##
+4/15/24
+
+Website now can store credentials and allow users to sign in/out. Only signed in users can upload
+a new song under the "new" page. Going to "all" fetches the uploaded songs from the database. Passwords
+are stored securely using Bcrypt and security protocols are now in place, we set auth cookies and a username
+in local memory.

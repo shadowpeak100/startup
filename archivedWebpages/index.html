@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-    <link rel="icon" href="pictures/SoundWaves.png" />
-    <link rel="stylesheet" type="text/css" href="src/styles.css">
+    <link rel="icon" href="../pictures/SoundWaves.png" />
+    <link rel="stylesheet" type="text/css" href="../src/styles.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +18,7 @@
           rel="stylesheet">
 </head>
 <body>
+<div id="root"></div>
 <!--menu bar-->
 <header>
     <div class="navbar">
@@ -47,10 +48,9 @@
                     <li><a class="button" id="loginButton" onclick="toggleLoginBox()">Log In</a></li>
                 </ul>
             </nav>
-
         </div>
 
-        <!--        login box-->
+<!--        login box-->
         <div class="login-box" id="loginBox">
             <h2>Login</h2>
             <form>
@@ -87,9 +87,23 @@
 <!--Actual Body-->
 
 <main>
+
+    <div id="hero">
+        <video loop muted autoplay preload="auto">
+            <source src="../pictures/turntable.mp4" type="video/mp4">
+            Your Browser does not support video
+        </video>
+        <div class="caption">
+            <h1>Music // Movement</h1>
+            <h2>Bridging hobbies, coding and hardware together</h2>
+        </div>
+    </div>
+
+    <div class="articleTexture"></div>
+
     <div class="body-flex">
         <div class="song-box">
-            <img id="africa" class="songElement" src="pictures/Play.png" alt="A Play Arrow">
+            <img id="africa" class="songElement" src="../pictures/Play.png" alt="A Play Arrow">
             <p class="songElement">
                 <a href="individualSong.html">Toto - Africa</a>
             </p>
@@ -100,11 +114,11 @@
                 <span class="star" data-value="4">&#9733;</span>
                 <span class="star" data-value="5">&#9733;</span>
             </div>
-            <img class="songElement" src="pictures/Download.png" alt="Download Symbol">
+            <img class="songElement" src="../pictures/Download.png" alt="Download Symbol">
         </div>
 
         <div class="song-box">
-            <img id="ariaMath" class="songElement" src="pictures/Play.png" alt="A Play Arrow">
+            <img id="ariaMath" class="songElement" src="../pictures/Play.png" alt="A Play Arrow">
             <a href="individualSong.html">C418 - Aria <Math></Math></a>
             <div class="star-rating">
                 <span class="star" data-value="1">&#9733;</span>
@@ -113,12 +127,12 @@
                 <span class="star" data-value="4">&#9733;</span>
                 <span class="star" data-value="5">&#9733;</span>
             </div>
-            <img src="pictures/Download.png" alt="Download Symbol">
+            <img src="../pictures/Download.png" alt="Download Symbol">
         </div>
 
         <div class="song-box">
-            <img id="fireflies" class="songElement" src="pictures/Play.png" alt="A Play Arrow">
-            <a href="individualSong.html">Owl City - Fireflies</a>
+            <img id="fireflies" class="songElement" src="../pictures/Play.png" alt="A Play Arrow">
+            <a href="individualSong.html">C418 - Aria <Math></Math></a>
             <div class="star-rating">
                 <span class="star" data-value="1">&#9733;</span>
                 <span class="star" data-value="2">&#9733;</span>
@@ -126,29 +140,27 @@
                 <span class="star" data-value="4">&#9733;</span>
                 <span class="star" data-value="5">&#9733;</span>
             </div>
-            <img src="pictures/Download.png" alt="Download Symbol">
+            <img src="../pictures/Download.png" alt="Download Symbol">
         </div>
 
-        <h1>Saved Objects</h1>
-        <div id="savedObjectsContainer" class="body-flex">
-            <!-- Saved objects will be added here dynamically -->
-        </div>
+        <h1>Chuck Norris Jokes</h1>
+        <button id="getJokeButton">Get Joke</button>
+        <div id="jokeContainer"></div>
     </div>
+
 </main>
 
 <!--Footer-->
-<!--<footer>-->
-<!--    <span class="text-reset footer-item">Brayden Lewis</span>-->
-<!--    <a class="footer-item" href="https://github.com/shadowpeak100">Visit my Github!</a>-->
-<!--    <a class="footer-item" href="privacy_policy.html">Privacy Policy</a>-->
-<!--    <a class="footer-item" href="about_us.html">About Us</a>-->
-<!--</footer>-->
+<footer>
+    <span class="text-reset footer-item">Brayden Lewis</span>
+    <a class="footer-item" href="https://github.com/shadowpeak100">Visit my Github!</a>
+    <a class="footer-item" href="privacy_policy.html">Privacy Policy</a>
+    <a class="footer-item" href="about_us.html">About Us</a>
+</footer>
 </body>
 </html>
 
-<script src="login.js"></script>
 <script>
-    updateLoginButtonText();
     window.addEventListener("DOMContentLoaded", () => {
         document.querySelector(".menu-icon").addEventListener("click", () => {
             document.querySelector(".main-menu").classList.toggle("menu-show");
@@ -167,5 +179,20 @@
         document.getElementById("myBar").style.width = scrolled + "%";
     }
 </script>
-<script src="playMusic.js"></script>
-<script src="loadContent.js"></script>
+
+<script src="../login.js"></script>
+<script>
+    updateLoginButtonText();
+    async function fetchChuckNorrisJoke() {
+        try {
+            const response = await fetch('/chuck-norris-joke');
+            const data = await response.json();
+            document.getElementById('jokeContainer').innerText = data.joke;
+        } catch (error) {
+            console.error('Error fetching Chuck Norris joke:', error);
+        }
+    }
+    document.getElementById('getJokeButton').addEventListener('click', fetchChuckNorrisJoke);
+</script>
+<script src="../playMusic.js"></script>
+

@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-    <link rel="icon" href="pictures/SoundWaves.png" />
-    <link rel="stylesheet" type="text/css" href="src/styles.css">
+    <link rel="icon" href="../pictures/SoundWaves.png" />
+    <link rel="stylesheet" type="text/css" href="../src/styles.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,8 +47,10 @@
                     <li><a class="button" id="loginButton" onclick="toggleLoginBox()">Log In</a></li>
                 </ul>
             </nav>
+
         </div>
 
+        <!--        login box-->
         <div class="login-box" id="loginBox">
             <h2>Login</h2>
             <form>
@@ -84,41 +86,69 @@
 </header>
 <!--Actual Body-->
 
-
 <main>
-    <div id="player-messages"></div>
     <div class="body-flex">
-        <h1>Save Object to Local Storage</h1>
+        <div class="song-box">
+            <img id="africa" class="songElement" src="../pictures/Play.png" alt="A Play Arrow">
+            <p class="songElement">
+                <a href="individualSong.html">Toto - Africa</a>
+            </p>
+            <div class="star-rating songElement">
+                <span class="star" data-value="1">&#9733;</span>
+                <span class="star" data-value="2">&#9733;</span>
+                <span class="star" data-value="3">&#9733;</span>
+                <span class="star" data-value="4">&#9733;</span>
+                <span class="star" data-value="5">&#9733;</span>
+            </div>
+            <img class="songElement" src="../pictures/Download.png" alt="Download Symbol">
+        </div>
 
-        <form id="uploadForm" enctype="multipart/form-data">
-            <label for="textFile">Text File:</label>
-            <input class="button" type="file" id="textFile"><br><br>
+        <div class="song-box">
+            <img id="ariaMath" class="songElement" src="../pictures/Play.png" alt="A Play Arrow">
+            <a href="individualSong.html">C418 - Aria <Math></Math></a>
+            <div class="star-rating">
+                <span class="star" data-value="1">&#9733;</span>
+                <span class="star" data-value="2">&#9733;</span>
+                <span class="star" data-value="3">&#9733;</span>
+                <span class="star" data-value="4">&#9733;</span>
+                <span class="star" data-value="5">&#9733;</span>
+            </div>
+            <img src="../pictures/Download.png" alt="Download Symbol">
+        </div>
 
-            <label for="mp3File">MP3 File:</label>
-            <input class="button" type="file" id="mp3File"><br><br>
+        <div class="song-box">
+            <img id="fireflies" class="songElement" src="../pictures/Play.png" alt="A Play Arrow">
+            <a href="individualSong.html">Owl City - Fireflies</a>
+            <div class="star-rating">
+                <span class="star" data-value="1">&#9733;</span>
+                <span class="star" data-value="2">&#9733;</span>
+                <span class="star" data-value="3">&#9733;</span>
+                <span class="star" data-value="4">&#9733;</span>
+                <span class="star" data-value="5">&#9733;</span>
+            </div>
+            <img src="../pictures/Download.png" alt="Download Symbol">
+        </div>
 
-            <label for="songTitle">Title:</label>
-            <textarea id="songTitle" rows="2" cols="50"></textarea><br><br>
-            <div id="buttonPlaceHolder"></div>
-        </form>
+        <h1>Saved Objects</h1>
+        <div id="savedObjectsContainer" class="body-flex">
+            <!-- Saved objects will be added here dynamically -->
+        </div>
     </div>
 </main>
 
-
 <!--Footer-->
-<footer>
-    <span class="text-reset footer-item">Brayden Lewis</span>
-    <a class="footer-item" href="https://github.com/shadowpeak100">Visit my Github!</a>
-    <a class="footer-item" href="privacy_policy.html">Privacy Policy</a>
-    <a class="footer-item" href="about_us.html">About Us</a>
-</footer>
+<!--<footer>-->
+<!--    <span class="text-reset footer-item">Brayden Lewis</span>-->
+<!--    <a class="footer-item" href="https://github.com/shadowpeak100">Visit my Github!</a>-->
+<!--    <a class="footer-item" href="privacy_policy.html">Privacy Policy</a>-->
+<!--    <a class="footer-item" href="about_us.html">About Us</a>-->
+<!--</footer>-->
 </body>
 </html>
 
-<script src="login.js"></script>
+<script src="../login.js"></script>
 <script>
     updateLoginButtonText();
-
     window.addEventListener("DOMContentLoaded", () => {
         document.querySelector(".menu-icon").addEventListener("click", () => {
             document.querySelector(".main-menu").classList.toggle("menu-show");
@@ -137,5 +167,5 @@
         document.getElementById("myBar").style.width = scrolled + "%";
     }
 </script>
-<script src="playMusic.js"></script>
-<script src="saveContent.js"></script>
+<script src="../playMusic.js"></script>
+<script src="../loadContent.js"></script>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="icon" href="pictures/SoundWaves.png" />
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+          rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+<!--menu bar-->
+<header>
+    <div class="navbar">
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.586 10.081c-1.439 0-1.35 2.802-2.029 4.071-.114.211-.425.184-.5-.044-.771-2.364-.419-8.108-2.51-8.108-2.189 0-1.648 7.433-2.5 10.462-.063.23-.381.25-.474.028-.9-2.161-.799-6.875-2.502-6.875-1.762 0-1.612 3.949-2.302 5.54-.091.213-.392.22-.493.01-.503-1.049-.664-3.165-2.564-3.165h-2.213c-.275 0-.499.224-.499.499s.224.501.499.501h2.213c1.572 0 1.038 3.484 2.854 3.484 1.684 0 1.502-3.79 2.223-5.47.088-.208.382-.202.466.006.805 2.047.79 6.98 2.641 6.98 2.077 0 1.337-7.856 2.443-10.621.083-.211.384-.222.479-.012 1.029 2.25.487 8.126 2.344 8.126 1.639 0 1.737-2.706 2.23-4.038.081-.212.373-.227.474-.027.516 1.001.846 2.572 2.4 2.572h2.235c.275 0 .499-.224.499-.499 0-.276-.224-.5-.499-.5h-2.235c-1.323 0-1.117-2.92-2.68-2.92z"/></svg>
+        </a>
+        <div class="main-menu">
+            <div class="menu-icon">
+                <svg viewbox="0 0 60 60" width="60px" height="60px">
+                    <line x1="5%" y1="50%" x2="95%" y2="50%" />
+                    <line x1="5%" y1="50%" x2="95%" y2="50%" />
+                </svg>
+            </div>
+            <nav>
+                <h2 class="hidden">Main Menu</h2>
+                <ul class="left">
+                    <li>
+                        <div id="wrap">
+                            <form action="" autocomplete="on">
+                                <input id="search" name="search" type="text" placeholder="Whatcha want?"><input id="search_submit" value="Rechercher" type="submit">
+                            </form>
+                        </div>
+                    </li>
+                    <li><a class="button" href="popularSongs.html">Popular</a></li>
+                    <li><a class="button" href="newSong.html">New</a></li>
+                    <li><a class="button" href="allSongs.html">All</a></li>
+                    <li><a class="button" id="loginButton" onclick="toggleLoginBox()">Log In</a></li>
+                </ul>
+            </nav>
+
+        </div>
+
+        <!--        login box-->
+        <div class="login-box" id="loginBox">
+            <h2>Login</h2>
+            <form>
+                <div class="user-box">
+                    <input type="text" id="userName" name="" required="">
+                    <label>Username</label>
+                </div>
+                <div class="user-box">
+                    <input type="password" id="userPassword" name="" required="">
+                    <label>Password</label>
+                </div>
+                <a href="#" onclick="loginUser()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Login
+                </a>
+                <a href="#" onclick="createUser()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Register
+                </a>
+            </form>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="myBar"></div>
+        </div>
+    </div>
+</header>
+<!--Actual Body-->
+
+<main>
+    <div class="body-flex">
+        <div class="song-box">
+            <img id="africa" class="songElement" src="pictures/Play.png" alt="A Play Arrow">
+            <p class="songElement">
+                <a href="individualSong.html">Toto - Africa</a>
+            </p>
+            <div class="star-rating songElement">
+                <span class="star" data-value="1">&#9733;</span>
+                <span class="star" data-value="2">&#9733;</span>
+                <span class="star" data-value="3">&#9733;</span>
+                <span class="star" data-value="4">&#9733;</span>
+                <span class="star" data-value="5">&#9733;</span>
+            </div>
+            <img class="songElement" src="pictures/Download.png" alt="Download Symbol">
+        </div>
+
+        <div class="song-box">
+            <img id="ariaMath" class="songElement" src="pictures/Play.png" alt="A Play Arrow">
+            <a href="individualSong.html">C418 - Aria <Math></Math></a>
+            <div class="star-rating">
+                <span class="star" data-value="1">&#9733;</span>
+                <span class="star" data-value="2">&#9733;</span>
+                <span class="star" data-value="3">&#9733;</span>
+                <span class="star" data-value="4">&#9733;</span>
+                <span class="star" data-value="5">&#9733;</span>
+            </div>
+            <img src="pictures/Download.png" alt="Download Symbol">
+        </div>
+
+        <div class="song-box">
+            <img id="fireflies" class="songElement" src="pictures/Play.png" alt="A Play Arrow">
+            <a href="individualSong.html">Owl City - Fireflies</a>
+            <div class="star-rating">
+                <span class="star" data-value="1">&#9733;</span>
+                <span class="star" data-value="2">&#9733;</span>
+                <span class="star" data-value="3">&#9733;</span>
+                <span class="star" data-value="4">&#9733;</span>
+                <span class="star" data-value="5">&#9733;</span>
+            </div>
+            <img src="pictures/Download.png" alt="Download Symbol">
+        </div>
+
+        <h1>Saved Objects</h1>
+        <div id="savedObjectsContainer" class="body-flex">
+            <!-- Saved objects will be added here dynamically -->
+        </div>
+    </div>
+</main>
+
+<!--Footer-->
+<!--<footer>-->
+<!--    <span class="text-reset footer-item">Brayden Lewis</span>-->
+<!--    <a class="footer-item" href="https://github.com/shadowpeak100">Visit my Github!</a>-->
+<!--    <a class="footer-item" href="privacy_policy.html">Privacy Policy</a>-->
+<!--    <a class="footer-item" href="about_us.html">About Us</a>-->
+<!--</footer>-->
+</body>
+</html>
+
+<script src="login.js"></script>
+<script>
+    updateLoginButtonText();
+    window.addEventListener("DOMContentLoaded", () => {
+        document.querySelector(".menu-icon").addEventListener("click", () => {
+            document.querySelector(".main-menu").classList.toggle("menu-show");
+        });
+    });
+
+    // When the user scrolls the page, execute myFunction
+    window.onscroll = function () {
+        myFunction()
+    };
+
+    function myFunction() {
+        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrolled = (winScroll / height) * 100;
+        document.getElementById("myBar").style.width = scrolled + "%";
+    }
+</script>
+<script src="playMusic.js"></script>
+<script src="loadContent.js"></script>

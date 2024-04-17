@@ -1,7 +1,8 @@
 import React from 'react';
 import { useRef } from 'react';
 
-export function New(username) {
+export function New({userName}) {
+    console.log(userName)
     const textFile = useRef(null);
     const mp3File = useRef(null);
     const songTitle = useRef(null);
@@ -60,7 +61,7 @@ export function New(username) {
                     <label form="songTitle">Title:</label>
                     <textarea id="songTitle" rows="2" cols="50" ref={songTitle}></textarea><br />
 
-                    {username !== '' ? (
+                    {userName !== '' ? (
                         <button id="saveButton" type="button" onClick={upload}>Save Object</button>
                     ) : (
                         <p>You must be signed in to save a song</p>

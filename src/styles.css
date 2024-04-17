@@ -355,7 +355,7 @@ body {
 
 body {
     z-index: -100;
-    background: url(../pictures/texture.png);
+    background: url(../public/pictures/texture.png);
 }
 
 footer {

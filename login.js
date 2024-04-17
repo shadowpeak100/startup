@@ -1,6 +1,6 @@
 const { MongoClient } = require('mongodb');
 const bcrypt = require('bcrypt');
-const config = require('./dbConfig.json');
+const config = require('./service/dbConfig.json');
 const {cookies} = require("express/lib/request");
 
 const dbName = 'startupDatabase';

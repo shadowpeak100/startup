@@ -72,3 +72,11 @@ Website now can store credentials and allow users to sign in/out. Only signed in
 a new song under the "new" page. Going to "all" fetches the uploaded songs from the database. Passwords
 are stored securely using Bcrypt and security protocols are now in place, we set auth cookies and a username
 in local memory.
+
+## React ##
+4/17/24
+
+The website now uses react to render elements! Upon sign in, the user can upload a song but this feature is restricted
+only to a valid signed in user. The buttons on the navigation are all routers and hooks are used to dynamically change 
+content via fetch requests. Everything is bundled using vite which minifies javascript and other files. Functional react 
+components can be seen especially around the log in features, showing the pop up and allowing the ability to upload a new song.
